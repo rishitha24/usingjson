@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+</html>
+
+<head>
+    <title>Visited Places</title>
+    <link href="ass.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+</body>
+
+
+<script>
+    const petsData = [
+
+        {
+            name: "Chopta",
+            place: "Uttarakhand, Rudraprayag",
+            place_id: 44,
+            photo: "http://www.uttarakhandtraveller.com/media/thumbnail/large/choptaa.jpg",
+            place_url: 'http://www.uttarakhandtraveller.com/places/chopta',
+            last_hit_on: '2020-06-15T10:25:45.000Z',
+            year: 2020,
+            place_type_id: 1,
+            detail: 'Chopta is an amazing destination to visit anytime throughout the year. Best time to visit in Summers in April-June and in Winters is Oct-Dec. But if you want to visit the sacred Tungnath Temple then visit from April to November because Temple is closed in winters and if you want to visit for snow then visit in winters, Chopta is covered with layers of snow look beautiful like mini Switzerland.',
+        }
+    ];
+    function age(year) {
+        let calculatedAge = new Date().getFullYear() - year;
+        if (calculatedAge == 1) {
+            return "1 year old";
+        } else if (calculatedAge == 0) {
+            return `Not even a year before`;
+        } else {
+            return `${calculatedAge} years back`;
+        }
+    }
+
+
+
+    function placeTemplate(pet) {
+        return `
+  <div class="visits">
+  <img class="place-photo" src="${pet.photo}">
+  <h2 class="pet-name">${pet.name} <span class="place">(${pet.place})</span></h2>
+  <p><strong>Last hit on:</strong> ${age(pet.year)}</p>
+  <p><strong>Place type Id:</strong> ${pet.place_type_id}</p>
+  <p><strong>Place Id:</strong> ${pet.place_id}</p>
+  <p><strong>About the place:</strong> ${pet.detail}</p>
+  <p><strong> Location: </strong><a href="${pet.place_url}">Click Here to know moe about the place</a></p>
+  
+  </div>
+`;
+    }
+
+    document.getElementById("app").innerHTML = `
+<h1 class="app-title">Places (${petsData.length} results)</h1>
+${petsData.map(placeTemplate).join("")}
+<p class="footer">These ${petsData.length} places were added recently. Check back soon for updates.</p>
+`;
+
+
+
+</script>
+
+</html>
